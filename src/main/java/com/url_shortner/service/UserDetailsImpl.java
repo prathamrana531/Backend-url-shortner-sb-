@@ -38,7 +38,7 @@ public class UserDetailsImpl implements UserDetails {
                 user.getId(),
                 user.getUsername(),
                 user.getPassword(),
-                user.getEmaail(),
+                user.getEmail(),
                 Collections.singletonList(authority)
         );
     }
