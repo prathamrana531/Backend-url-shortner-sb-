@@ -1,6 +1,6 @@
-package com.url_shortner.service;
+package com.url.shortner.service;
 
-import com.url_shortner.model.User;
+import com.url.shortner.model.User;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -19,7 +19,7 @@ public class UserDetailsImpl implements UserDetails {
 
     private Long id;
     private  String username;
-    private String password;;
+    private String password;
     private String email;
 
     private Collection<? extends GrantedAuthority> authorities;
@@ -50,11 +50,11 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public String getPassword() {
-        return "";
+        return password;
     }
 
     @Override
     public String getUsername() {
-        return "";
+        return username;
     }
 }
