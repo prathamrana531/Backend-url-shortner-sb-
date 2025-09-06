@@ -1,6 +1,6 @@
-package com.url_shortner.security.jwt;
+package com.url.shortner.security.jwt;
 
-import com.url_shortner.service.UserDetailsImpl;
+import com.url.shortner.service.UserDetailsImpl;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;

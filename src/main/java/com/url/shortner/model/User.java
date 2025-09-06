@@ -1,4 +1,4 @@
-package com.url_shortner.model;
+package com.url.shortner.model;
 
 
 
@@ -14,7 +14,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String email;
-    private String password;
     private String username;
+    private String password;
     private String role="ROLE_USER";
 }

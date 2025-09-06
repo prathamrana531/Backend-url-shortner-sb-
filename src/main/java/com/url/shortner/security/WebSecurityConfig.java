@@ -1,7 +1,7 @@
-package com.url_shortner.security;
+package com.url.shortner.security;
 
-import com.url_shortner.security.jwt.JwtAuthenticationFilter;
-import com.url_shortner.service.UserDetailsServiceImpl;
+import com.url.shortner.security.jwt.JwtAuthenticationFilter;
+import com.url.shortner.service.UserDetailsServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -39,6 +39,7 @@ public class WebSecurityConfig {
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
+
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();

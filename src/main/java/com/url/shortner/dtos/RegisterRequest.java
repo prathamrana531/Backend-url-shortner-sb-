@@ -1,4 +1,4 @@
-package com.url_shortner.dtos;
+package com.url.shortner.dtos;
 
 
 import lombok.Data;
@@ -11,5 +11,4 @@ public class RegisterRequest {
     private String email;
     private String password;
     private Set<String> roles;
-
 }
