@@ -5,6 +5,6 @@ import java.time.LocalDate;
 
 @Data
 public class EventClickDto {
-    private Long id;
     private LocalDate clickDate;
+    private Long count;
 }
