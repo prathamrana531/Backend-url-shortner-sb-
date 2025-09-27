@@ -12,6 +12,8 @@ public class EventClick {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private LocalDateTime clickDate;
+
+
     @ManyToOne
     @JoinColumn(name = "url_mapping_id")
     private UrlMapping urlMapping;
