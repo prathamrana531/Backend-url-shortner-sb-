@@ -2,6 +2,7 @@ package com.url.shortner.service;
 
 import com.url.shortner.dtos.EventClickDto;
 import com.url.shortner.dtos.UrlMappingDto;
+import com.url.shortner.model.EventClick;
 import com.url.shortner.model.UrlMapping;
 import com.url.shortner.model.User;
 import com.url.shortner.repository.EventClickRepository;
@@ -9,8 +10,10 @@ import com.url.shortner.repository.UrlMappingRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.stream.Collectors;
 
@@ -75,5 +78,26 @@ public class UrlMappingService {
                     .collect(Collectors.toList());
         }
         return null;
+    }
+
+    public Map<LocalDate, Long> getTotalClicksByUserAndDate(User user, LocalDate start, LocalDate end) {
+        List<UrlMapping> urlMappings = urlMappingRepository.findByUser(user);
+        List<EventClick> clickEvents = eventClickRepository.findByUrlMappingInAndClickDateBetween(urlMappings, start.atStartOfDay(), end.plusDays(1).atStartOfDay());
+        return clickEvents.stream()
+                .collect(Collectors.groupingBy(click -> click.getClickDate().toLocalDate(), Collectors.counting()));
+
+    }
+
+    public UrlMapping getOrignalUrl(String shortUrl){
+        UrlMapping urlMapping = urlMappingRepository.findByShortUrl(shortUrl);
+        if(urlMapping != null) {
+            urlMapping.setClickCount(urlMapping.getClickCount() + 1);
+            urlMappingRepository.save(urlMapping);
+            EventClick clickEvent = new EventClick();
+            clickEvent.setClickDate(LocalDateTime.now());
+            clickEvent.setUrlMapping(urlMapping);
+            eventClickRepository.save(clickEvent);
+        }
+        return urlMapping;
     }
 }

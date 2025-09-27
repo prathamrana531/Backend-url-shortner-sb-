@@ -15,9 +15,9 @@ public interface EventClickRepository extends JpaRepository<EventClick,Long> {
                                                           LocalDateTime startDate ,
                                                           LocalDateTime endDate);
 
-     List<EventClick> findByUrlMappingInAndClickDateBetween(List<UrlMapping> mapping ,
-                                                          LocalDateTime startDate ,
-                                                          LocalDateTime endDate);
+     List<EventClick> findByUrlMappingInAndClickDateBetween(List<UrlMapping> urlMappings,
+                                                                  LocalDateTime startDate,
+                                                                  LocalDateTime endDate);
 
 
 }
